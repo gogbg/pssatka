@@ -1,0 +1,19 @@
+# https://microsoft.github.io/PSRule/stable/concepts/PSRule/en-US/about_PSRule_Options/#options
+
+---
+# Synopsis: Module configuration for NlaStaleBackups.Rules module.
+apiVersion: github.com/microsoft/PSRule/v1
+kind: ModuleConfig
+metadata:
+  name: MyModule
+spec:
+  output:
+    culture:
+    - en
+  convention:
+    include:
+    - userResolver.init
+    - userResolver.resolve
+  binding:
+    targetName:
+    - id
