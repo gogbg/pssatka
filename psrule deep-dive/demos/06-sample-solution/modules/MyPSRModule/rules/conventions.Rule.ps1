@@ -6,7 +6,6 @@ Export-PSRuleConvention 'userResolver.init' -Initialize {
 Export-PSRuleConvention 'userResolver.resolve' -if {$TargetObject.userType -eq 'Member'} -Begin {
   $userResolver = $PSRule.GetService('userResolver')
   $userResolver.AddUser($TargetObject)
-  Write-Host "Found user: $($TargetObject.userPrincipalName)"
 }
 
 class userResolver {

@@ -17,23 +17,23 @@ function Export-MyPSRData
     $azureExportFolder = Join-Path -Path $OutFolder -ChildPath 'azure'
     if (-not (Test-Path -Path $azureExportFolder))
     {
-        New-Item -Path $azureExportFolder -ItemType Directory
+        $null = New-Item -Path $azureExportFolder -ItemType Directory
     }
 
     #Export Azure Resource Data
-    Export-AzRuleData -OutputPath $azureExportFolder -Subscription $SubscriptionId -Tenant $TenantID
+    $null = Export-AzRuleData -OutputPath $azureExportFolder -Subscription $SubscriptionId -Tenant $TenantID
 
     #Create entraExportFolder folder
     $entraExportFolder = Join-Path -Path $OutFolder -ChildPath 'entraid'
     if (-not (Test-Path -Path $entraExportFolder))
     {
-        New-Item -Path $entraExportFolder -ItemType Directory
+        $null = New-Item -Path $entraExportFolder -ItemType Directory
     }
 
     #Export EntraId Data
-    $token = Get-AzAccessToken -ResourceTypeName MSGraph
-    Connect-MgGraph -AccessToken ($token.Token | ConvertTo-SecureString -AsPlainText)
-    Export-Entra -Path $exportFolder -Type Users
+    $token = Get-AzAccessToken -ResourceTypeName MSGraph -WarningAction SilentlyContinue
+    Connect-MgGraph -AccessToken ($token.Token | ConvertTo-SecureString -AsPlainText) -NoWelcome
+    $null = Export-Entra -Path $exportFolder -Type Users
 }
 
 function Get-MyPSRExport
