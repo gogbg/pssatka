@@ -11,6 +11,7 @@ Rule 'group.ShouldHaveValidUsers' -if {$TargetObject.type -eq 'group'} {
 
     if ($invalidUsers) {
       reason "Users with id: '$($invalidUsers -join ',')' are not valid"
+      $PSRule.Data['invalidMemberIds'] = $invalidUsers #this will append the data to the assessment result
       $false
     }
     else

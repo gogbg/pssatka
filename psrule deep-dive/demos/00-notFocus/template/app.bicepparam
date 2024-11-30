@@ -1,0 +1,12 @@
+using './app.bicep'
+
+param location = 'westeurope'
+param vnetName = 'bcpadvmod05-vn01'
+param vnetAddressRange = '192.168.0.0/16'
+param subnet1Name = 'bcpadvmod05-sn01'
+param subnet1AddressRange = '192.168.1.0/24'
+param subnet2Name = 'bcpadvmod05-sn02'
+param subnet2AddressRange = '192.168.2.0/24'
+param storageAccountName = 'bcpadvmod05sa05'
+param containerInstanceName = 'bcpadvmod05ci01'
+param containerInstanceImage = 'mcr.microsoft.com/dotnet/samples:aspnetapp'
